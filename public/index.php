@@ -6,6 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Absolute Mountaineering</title>
 	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="//unpkg.com/alpinejs" defer></script>
 </head>
 	<body>
 		<!-- This example requires Tailwind CSS v2.0+ -->
@@ -28,9 +29,9 @@
 				</button>
 			  </div>
 			  <nav class="hidden md:flex space-x-10">
-				<div class="relative">
+				<div x-data="{ open: false }" class="relative">
 				  <!-- Item active: "text-gray-900", Item inactive: "text-gray-500" -->
-				  <button type="button" class="text-gray-500 group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 " aria-expanded="false">
+				  <button x-on:click="open = true" type="button" class="text-gray-500 group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 " aria-expanded="false" @click="dropdownMenu = ! dropdownMenu">
 					<span class="link-toggle">Solutions</span>
 					<!--
 					  Heroicon name: solid/chevron-down
@@ -52,7 +53,7 @@
 					  From: "opacity-100 translate-y-0"
 					  To: "opacity-0 translate-y-1"
 				  -->
-				  <div class="absolute z-10 -ml-4 mt-3 transform px-2 w-screen max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2">
+				  <div x-show="open" x-on:click.away="open = false" class="absolute z-10 -ml-4 mt-3 transform px-2 w-screen max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2" x-data="{dropdownMenu: false}">
 					<div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
 					  <div class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
 						<a href="#" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
@@ -139,9 +140,9 @@
 				<a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900"> Pricing </a>
 				<a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900"> Docs </a>
 
-				<div class="relative">
+				<div x-data="{ open: false }" class="relative">
 				  <!-- Item active: "text-gray-900", Item inactive: "text-gray-500" -->
-				  <button type="button" class="text-gray-500 group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" aria-expanded="false">
+				  <button x-on:click="open = true" type="button" class="text-gray-500 group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" aria-expanded="false">
 					<span>More</span>
 					<!--
 					  Heroicon name: solid/chevron-down
@@ -163,7 +164,8 @@
 					  From: "opacity-100 translate-y-0"
 					  To: "opacity-0 translate-y-1"
 				  -->
-				  <div class="absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-md sm:px-0">
+				  <div x-show="open"
+      x-on:click.away="open = false" class="absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-md sm:px-0">
 					<div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
 					  <div class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
 						<a href="#" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
