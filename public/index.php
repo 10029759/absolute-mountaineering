@@ -21,9 +21,6 @@
 				</a>
 			  </div>
 
-				<!-- <div x-data="{id: 1}">
-					<button @click="$dispatch('open-dropdown',{id})">Open Dropdown</button>
-				</div> -->
 
 			  <div x-data="{id: 1}" class="-mr-2 -my-2 md:hidden">
 				<button @click="$dispatch('open-dropdown',{id})" type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
@@ -264,7 +261,7 @@
 		  <div x-data="{ open: false }"
 			x-show="open"
 			@open-dropdown.window="if ($event.detail.id == 1) open = true"
-			@click.away="open = false" class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+			@click.away="open = false" class="absolute top-0 inset-x-0 p-2 z-10 transition transform origin-top-right md:hidden">
 			<div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
 			  <div class="pt-5 pb-6 px-5">
 				<div class="flex items-center justify-between">
